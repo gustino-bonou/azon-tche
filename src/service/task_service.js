@@ -14,6 +14,7 @@ const task = ref({})
 
 
 
+
 export default function taskService() {
 
 /*   const getRolesList = async (data) => {
@@ -56,7 +57,7 @@ export default function taskService() {
             console.log( response)
               tasks.value = response.data?.data ?? []
               console.log('tasks', tasks.value)
-            taskPaginationData.value = response.data ?? []
+            taskPaginationData.value = response.data.meta ?? []
             success.value = true
         }
       })
@@ -180,7 +181,7 @@ export default function taskService() {
     storeTask,
     searchUser,
     updateTask,
-    getTask,assignTask,
+    getTask, assignTask,
       errors,
       projects,
       tasks,

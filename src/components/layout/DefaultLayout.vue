@@ -16,8 +16,8 @@
           <template #button-content>
             <b-button class="">{{ user?.name }}</b-button>
           </template>
-          <b-dropdown-item >Logout </b-dropdown-item>
-          <b-dropdown-item >Profile</b-dropdown-item>
+          <b-dropdown-item>Logout </b-dropdown-item>
+          <b-dropdown-item>Profile</b-dropdown-item>
         </b-dropdown>
       </div>
     </div>
@@ -50,24 +50,37 @@
 </template>
  
 
-<script>
-import listImage from "@/assets/images/logo-tche.png";
-import { inject } from "vue";
 
-//const { errorMsg, successMsg } = useAlertNotification()
-//import useAlertNotification from '@/services/notifications/useNotification.js'
+
+<script>
+import { provide, ref, onMounted, inject } from "vue";
+import listImage from "@/assets/images/logo-tche.png";
+import useAuthService from "../../service/auth_service";
+
 export default {
   setup() {
-    const user = inject("user");
-    console.log("inject user", user);
+    const { success, currentUser, getAuthUser } = useAuthService();
+    const user = ref(null);
+
+    onMounted(async () => {
+      await getAuthUser().then(() => {
+        if (success.value) {
+          user.value = currentUser.value;
+          console.log("in app vue ", user.value);
+        }
+      });
+    });
+
+    provide("user", user);
+    inject("user", user);
+
     return {
       listImage,
-      user,
+      user
     };
   },
 };
 </script>
-
 
 
 <style scoped>

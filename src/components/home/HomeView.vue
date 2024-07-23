@@ -251,6 +251,18 @@
         </div>
       </div>
     </div>
+
+    <div
+      class="d-flex flex-row justify-content-end align-content-end mb-5 mt-3"
+      v-if="showDataComponent()"
+    >
+      <div>
+        <Pagination
+          :paginator="taskPaginationData"
+          @page-change="onPageChange"
+        ></Pagination>
+      </div>
+    </div>
   </div>
 </template>
 
@@ -262,12 +274,14 @@ import EditTaskModal from "../modal/EditTaskModal.vue";
 import AssignTaskModal from "../modal/AssignTaskModal.vue";
 import { Modal } from "bootstrap";
 import userIcon from "@/assets/icon/user.png";
+import Pagination from "@/components/widget/CustomPagination.vue";
 
 export default {
   components: {
     AddTaskModal,
     EditTaskModal,
     AssignTaskModal,
+    Pagination,
   },
   setup() {
     const isLoading = ref(false);
@@ -287,6 +301,7 @@ export default {
       priority: "",
       status: "",
       project_id: selectedProject.value,
+      page: "",
     });
 
     const {
@@ -328,7 +343,6 @@ export default {
         if (success.value) {
           userProjects.value = projects.value;
           projectTasks.value = tasks.value;
-          paginator.value = taskPaginationData.value;
           errorMessage.value = "";
           selectedProject.value = defaultProject.value.id;
           console.log("index", selectedProject.value);
@@ -348,13 +362,17 @@ export default {
       await getProjectTasks(filterable).then(() => {
         if (success.value) {
           projectTasks.value = tasks.value;
-          paginator.value = taskPaginationData.value;
           errorMessage.value = "";
         } else {
           errorMessage.value = message.value;
         }
         isLoading.value = false;
       });
+    };
+
+    const onPageChange = async (page = 1) => {
+      filterable.page = page;
+      await fetchProjectTasks();
     };
 
     const onProjectChange = async () => {
@@ -478,6 +496,7 @@ export default {
       errorMessage,
       filterable,
       userIcon,
+      taskPaginationData,
       openModal,
       statusClass,
       priorityClass,
@@ -488,6 +507,7 @@ export default {
       truncate,
       openEditModal,
       openAssignTaskModal,
+      onPageChange,
     };
   },
 };
