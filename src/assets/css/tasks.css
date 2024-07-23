@@ -1,0 +1,82 @@
+.task-item{
+    background-color: #01212E ;
+    height: 220px;
+    padding: 10px;
+}
+
+.card-title {
+  font-weight: bold;
+  color: white;
+}
+.card-text span {
+  display: inline-block;
+  margin-right: 10px;
+}
+.text-danger {
+  color: rgb(150, 55, 55) ;
+}
+.text-muted {
+  color: gray;
+}
+
+.new-task{
+  padding: 10px !important;
+  width: 150px !important;
+  border-radius: 5px !important; 
+  font-size: 18px !important;
+  background-color: white;
+}
+
+.custom-select-wrapper {
+  position: relative;
+  display: inline-block;
+}
+
+.custom-select {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  background: white;
+  padding-right: 40px; 
+}
+
+.custom-icon {
+  position: absolute;
+  top: 50%;
+  right: 10px; 
+  transform: translateY(-50%);
+  pointer-events: none;
+}
+
+.btn-save{
+  width: 150px;
+  border-radius: 5px;
+}
+.save{
+  background-color: #01212E ;
+  color: white;
+}
+.cancel{
+  color: #01212E;
+  border: 1px #01212E solid;
+}
+
+.done-by{
+  background-color: #00292D;
+  padding: 5px;
+}
+
+.project-item{
+  background-color: #01212E;
+  padding: 10px;
+  height: 70px;
+}
+
+.detail{
+  background-color: white;
+}
+
+.detail-header{
+  background-color: #01212E;
+  color: white;
+}

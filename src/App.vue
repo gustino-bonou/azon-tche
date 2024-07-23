@@ -1,26 +1,32 @@
+<!-- App.vue -->
 <template>
-  <img alt="Vue logo" src="./assets/logo.png">
-  <HelloWorld msg="Welcome to Your Vue.js App"/>
+  <router-view></router-view>
 </template>
 
+
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+import { provide, ref, onMounted, inject } from "vue";
+import useAuthService from "../src/service/auth_service";
 
 export default {
-  name: 'App',
-  components: {
-    HelloWorld
-  }
-}
-</script>
+  setup() {
+    const { success, currentUser, getAuthUser } = useAuthService();
+    const user = ref(null);
 
-<style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
-</style>
+    onMounted(async () => {
+      await getAuthUser().then(() => {
+        if (success.value) {
+          user.value = currentUser.value;
+          console.log("in app vue ", user.value);
+        }
+      });
+    });
+
+    provide("user", user);
+    const testu = inject("user", user);
+    console.log("innnnn", testu)
+
+    return {};
+  },
+};
+</script>
