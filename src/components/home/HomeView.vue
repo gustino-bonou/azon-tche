@@ -1,7 +1,7 @@
 <template>
   <div class="view-content me-2">
     <div class="d-flex flex-row justify-content-between flex-wrap mb-3 mt-3">
-      <div class="custom-select-wrapper mb-2">
+      <div class="custom-select-wrapper mb-2" v-if="userProjects?.length > 0">
         <select
           class="form-select custom-select c-form-select"
           v-model="selectedProject"
@@ -255,10 +255,10 @@
     <div
       class="d-flex flex-row justify-content-end align-content-end mb-5 mt-3"
       v-if="showDataComponent()"
-    >
+    > 
       <div>
         <Pagination
-          :paginator="taskPaginationData"
+          :paginator="cPaginator"
           @page-change="onPageChange"
         ></Pagination>
       </div>
@@ -287,7 +287,7 @@ export default {
     const isLoading = ref(false);
     const userProjects = ref([]);
     const projectTasks = ref([]);
-    const paginator = ref([]);
+    const cPaginator = ref({});
     const errorMessage = ref("");
     const selectedProject = ref("");
     const selectedTask = ref("");
@@ -345,7 +345,7 @@ export default {
           projectTasks.value = tasks.value;
           errorMessage.value = "";
           selectedProject.value = defaultProject.value.id;
-          console.log("index", selectedProject.value);
+          cPaginator.value = taskPaginationData.value;
         } else {
           errorMessage.value = message.value;
         }
@@ -362,6 +362,7 @@ export default {
       await getProjectTasks(filterable).then(() => {
         if (success.value) {
           projectTasks.value = tasks.value;
+          cPaginator.value = taskPaginationData.value;
           errorMessage.value = "";
         } else {
           errorMessage.value = message.value;
@@ -492,11 +493,10 @@ export default {
       selectedProject,
       selectedTask,
       projectTasks,
-      paginator,
+      cPaginator,
       errorMessage,
       filterable,
       userIcon,
-      taskPaginationData,
       openModal,
       statusClass,
       priorityClass,

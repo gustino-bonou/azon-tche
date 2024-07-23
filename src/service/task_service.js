@@ -17,26 +17,13 @@ const task = ref({})
 
 export default function taskService() {
 
-/*   const getRolesList = async (data) => {
-    await Api.get('/roles', data)
-      .then((response) => {
-        if (response.status === 200) {
-          success.value = true
-          roles.value = response.data.data
-        }
-      })
-      .catch((error) => {
-        console.log(error)
-      })
-  }
- */
-
   const homeData = async (data) => {
     await Api.get('/task', data)
       .then((response) => {
         if (response.status === 200) {
             projects.value = response.data?.projects?.data ?? []
-            taskPaginationData.value = response.data?.tasks ?? []
+          taskPaginationData.value = response.data?.tasks?.meta ?? []
+          console.log('value',taskPaginationData.value)
             tasks.value = response.data?.tasks?.data ?? []
             defaultProject.value = response.data?.defualt_project ?? {}
             success.value = true
@@ -58,6 +45,7 @@ export default function taskService() {
               tasks.value = response.data?.data ?? []
               console.log('tasks', tasks.value)
             taskPaginationData.value = response.data.meta ?? []
+            console.log('rr', taskPaginationData.value)
             success.value = true
         }
       })
