@@ -1,0 +1,91 @@
+
+
+body {
+  background:  #00292D !important;
+}
+
+.link{
+  text-decoration: none;
+  color: blue;
+  opacity: 0.9;
+}
+ 
+
+
+ 
+.navbar-toggle-custom .navbar-toggler-icon {
+  background-image: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMS9zdmciIHdpZHRoPSIxNiIgaGVpZ2h0PSIxNiIgZmlsbD0iY3VycmVudENvbG9yIiBjbGFzcyAiYmktYmktbGlzdCIgdmlld0JveD0iMCAwIDE2IDE2Ij4KICA8cGF0aCBmaWxsLXJ1bGU9ImV2ZW5vZGQiIGQ9Ik0yLjUgMTJhLjUuNSAwIDAgMSAuNS0uNUg4LjFBLjUuNSAwIDAgMSAzIDIuNSAxMmwtLjUtLjV6bSAtMiAxMjAuMCAwIDEgMCAwLjEtLjUgMCAwLTEgMCAwLTEwIDAgMSAtLjUtLjV6bSAtMiA0LTAuNQ==');
+  background-size: 100%;
+}
+
+.navbar-toggler{
+  color: white;
+  border: none !important;
+}
+
+.link-text{
+  text-decoration-line: none !important;
+}
+.navigate-item{
+
+  background-color: white;
+  border-radius: 5px;
+
+}
+
+
+
+
+.nav-item{
+    text-decoration-line: none !important;
+    width: 200px;
+    border-radius: 5px;
+    margin-bottom: 20px;
+    padding-left: 5px;
+
+}
+
+.router-link-exact-active{
+  background-color: black !important;
+}
+
+[aria-current="page"] {
+  background-color: #007bff !important; 
+  border-radius: 4px;
+}
+
+.router-link-active{
+  background-color: white;
+  border-radius: 5px;
+}
+
+a{
+  text-decoration:  none !important;
+}
+
+
+.logo{
+  height: 100px;  
+}
+
+.test{
+  height: 50px;
+  width: 50px;
+  background-color: aliceblue;
+}
+
+.close-modal{
+  text-decoration: none;
+  border: none;
+}
+
+.modal-header{
+  background-color: #01212E;
+}
+
+.c-form-select{
+  padding: 10px !important;
+  width: 150px !important;
+  border-radius: 5px !important;
+  font-size: 18px !important;
+}
