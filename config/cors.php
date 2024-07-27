@@ -19,7 +19,7 @@ return [
 
     'allowed_methods' => ['*'],
 
-    'allowed_origins' => ['https://arrete.justice.bj', 'https://arrete-preprod.waouhmonde.com', 'http://127.0.0.1:8000', 'http://localhost:8082', 'http://localhost:8081'],
+    'allowed_origins' => ['http://127.0.0.1:8000', 'http://localhost:8082', 'http://localhost:8081'],
 
     'allowed_origins_patterns' => [],
 
